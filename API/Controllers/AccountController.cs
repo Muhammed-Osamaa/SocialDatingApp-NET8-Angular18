@@ -16,7 +16,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
         if (await UserExists(registerDto.Username))
-        {
+        {       
             return BadRequest("The username is taken before");
         }
         using var hash = new HMACSHA512();

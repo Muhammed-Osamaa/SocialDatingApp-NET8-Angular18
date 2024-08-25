@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-lg">
+    <a class="navbar-brand" href="#">Dating APP</a>
+
+    @if (loggedIn) {
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link">Matches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Lists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Messages</a>
+        </li>
+        <li>
+          <a class="nav-link" (click)="logOut()">Log Out</a>
+        </li>
+          
+      </ul>
+
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle">
+          Welcome User
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Edit Profile</a>
+          <a class="dropdown-item" (click)="logOut()">Log Out</a>
+        </div>
+      </div>
+    }
+
+    @if (!loggedIn) {
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
+        <input class="form-control me-2" name="username" [(ngModel)]="model.username" type="text" placeholder="Username" />
+        <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" />
+        <button class="btn btn-outline-success" type="submit">Login</button>
+      </form>
+    }
+
+  </div>
+</nav>
