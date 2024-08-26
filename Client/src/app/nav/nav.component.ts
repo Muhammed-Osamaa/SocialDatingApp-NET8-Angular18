@@ -1,13 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { BsDropdownModule,BsDropdownConfig  } from 'ngx-bootstrap/dropdown';
+
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,BsDropdownModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
 export class NavComponent {
   private accountService = inject(AccountService);
