@@ -2,7 +2,7 @@
   <div class="container">
     <a class="navbar-brand" href="#">Dating APP</a>
 
-    @if (loggedIn) {
+    @if (accountService.currentUser()) {
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <a class="nav-link">Matches</a>
@@ -14,28 +14,28 @@
           <a class="nav-link">Messages</a>
         </li>
         <li>
-          <a class="nav-link" (click)="logOut()">Log Out</a>
+          <a class="nav-link" (click)="accountService.logOut()">Log Out</a>
         </li>
           
       </ul>
 
       <div class="dropdown show" dropdown  >
         <a class="btn btn-secondary dropdown-toggle"  dropdownToggle >
-          Welcome User
+          Hello {{accountService.currentUser()?.username}}!
         </a>
         <div class="dropdown-menu" *dropdownMenu>
           <a class="dropdown-item">Edit Profile</a>
           <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logOut()">Log Out</a>
+          <a class="dropdown-item" (click)="accountService.logOut()">Log Out</a>
         </div>
       </div>
     }
 
-    @if (!loggedIn) {
+    @if (!accountService.currentUser()) {
       <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
         <input class="form-control me-2" name="username" [(ngModel)]="model.username" type="text" placeholder="Username" />
         <input class="form-control me-2" name="password" [(ngModel)]="model.password" type="password" placeholder="Password" />
-        <button class="btn btn-outline-success" type="submit">Login</button>
+        <button class="btn btn-outline-success text-white" type="submit">Login</button>
       </form>
     }
 
