@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
       complete:() => console.log("request is done")
     })
   }
+
   setCurrentUser(){
     const userString = localStorage.getItem("user");
     if(userString){
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
       return;
     }
   }
+
   ngOnInit(): void {
     this.getUser();
     this. setCurrentUser();

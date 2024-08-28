@@ -19,6 +19,15 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         {       
             return BadRequest("The username is taken before");
         }
+        if (string.IsNullOrEmpty(registerDto.Username)){
+            return BadRequest("username is not valid");
+        }
+          if (string.IsNullOrEmpty(registerDto.Password)){
+            return BadRequest("Password is not valid");
+        }
+        if (string.IsNullOrEmpty(registerDto.Password) && string.IsNullOrEmpty(registerDto.Username)){
+            return BadRequest("username and Password are not valid");
+        }
         using var hash = new HMACSHA512();
         var user = new AppUser()
         {
