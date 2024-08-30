@@ -9,7 +9,7 @@ namespace API.ErrorTesting
         [Authorize]
         [HttpGet("auth")]
         public ActionResult<string> GetAuth(){
-            return "secrect text";
+            return "NO NO NO";
         }
 
         [HttpGet("not-found")]
@@ -26,5 +26,7 @@ namespace API.ErrorTesting
         public ActionResult<string> GetBadRequest(){
             return BadRequest("this was a bad request");
         }
+
+
     }
 }

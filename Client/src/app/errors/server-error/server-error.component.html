@@ -1,0 +1,12 @@
+<div class="d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">Internal Server Error</h1>
+        @if (error) {
+            <p class="fs-3"> <span class="text-danger">Error:</span> {{error.message}}</p>
+        }
+        <p class="lead">
+            We have encountered some problems try again later
+        </p>
+        <a routerLink="/" class="btn btn-primary">Go Home</a>
+    </div>
+</div>

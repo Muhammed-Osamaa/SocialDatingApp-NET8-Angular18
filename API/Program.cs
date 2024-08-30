@@ -17,12 +17,12 @@ app.UseMiddleware<ExceptionMiddleWare>();
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-
-app.UseAuthorization();
-
 app.MapControllers();
 
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200","https://localhost:4200"));
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.Run();
