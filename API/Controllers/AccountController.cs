@@ -28,20 +28,21 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         if (string.IsNullOrEmpty(registerDto.Password) && string.IsNullOrEmpty(registerDto.Username)){
             return BadRequest("username and Password are not valid");
         }
-        using var hash = new HMACSHA512();
-        var user = new AppUser()
-        {
-            UserName = registerDto.Username.ToLower(),
-            PasswordHash = hash.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            PasswordSalt = hash.Key
-        };
-        await context.Users.AddAsync(user);
-        await context.SaveChangesAsync();
-        return new UserDto()
-        {
-            Username = user.UserName,
-            Token = tokenService.CreateToken(user)
-        };
+        // using var hash = new HMACSHA512();
+        // var user = new AppUser()
+        // {
+        //     UserName = registerDto.Username.ToLower(),
+        //     PasswordHash = hash.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        //     PasswordSalt = hash.Key
+        // };
+        // await context.Users.AddAsync(user);
+        // await context.SaveChangesAsync();
+        // return new UserDto()
+        // {
+        //     Username = user.UserName,
+        //     Token = tokenService.CreateToken(user)
+        // };
+        return Ok();
     }
 
     [HttpPost("login")]

@@ -10,6 +10,7 @@ public class ExceptionMiddleWare(RequestDelegate next,ILogger<ExceptionMiddleWar
      public async Task InvokeAsync(HttpContext context){
         try
         {
+            logger.LogInformation("No Global Excetion");
            await next(context);
         }
         catch (Exception ex)
