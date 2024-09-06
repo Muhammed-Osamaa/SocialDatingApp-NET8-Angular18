@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-test-errors',
@@ -10,9 +11,11 @@ import { Component, inject } from '@angular/core';
 })
 export class TestErrorsComponent {
   private http = inject(HttpClient);
+  baseUrl = environment.apiUrl;
 
   get400Error() {
-    this.http.get("https://localhost:5001/api/ErrorList/bad-request").subscribe({
+   const url = this.baseUrl;
+    this.http.get(url+"ErrorList/bad-request").subscribe({
       next:r => console.log(r),
       error:err =>console.log(err)      
     })

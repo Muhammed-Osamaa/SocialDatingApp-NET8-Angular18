@@ -19,6 +19,7 @@ export class NavComponent {
   accountService = inject(AccountService);
   route = inject(Router);
   toastrService = inject(ToastrService);
+  baseUrl = this.accountService.baseUrl
   model: {
     username: string;
     password: string;
