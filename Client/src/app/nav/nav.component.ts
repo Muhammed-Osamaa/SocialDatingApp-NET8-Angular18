@@ -13,7 +13,7 @@ import { TitleCasePipe } from '@angular/common';
   imports: [FormsModule,BsDropdownModule,RouterLink,RouterLinkActive,TitleCasePipe],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
-  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
+  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },RouterLink]
 })
 export class NavComponent {
   accountService = inject(AccountService);

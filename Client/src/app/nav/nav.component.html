@@ -29,7 +29,7 @@
         Hello {{ accountService.currentUser()?.username | titlecase }}!
       </a>
       <div class="dropdown-menu" *dropdownMenu>
-        <a class="dropdown-item">Edit Profile</a>
+        <a class="dropdown-item" routerLink="/member/edit">Edit Profile</a>
         <div class="divider dropdown-divider"></div>
         <a class="dropdown-item" (click)="logOut()">Log Out</a>
       </div>
