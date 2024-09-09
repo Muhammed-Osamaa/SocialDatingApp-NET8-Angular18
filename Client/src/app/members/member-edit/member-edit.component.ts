@@ -23,7 +23,7 @@ export class MemberEditComponent implements OnInit{
       $event.returnValue = true;
     }
   }
-  member?:Member;
+  member!:Member;
   private accountService = inject(AccountService);
   private memberService = inject(MembersService);
   private toastr = inject(ToastrService)
@@ -40,7 +40,7 @@ export class MemberEditComponent implements OnInit{
   }
 
   updateMember() {
-    this.memberService.updatMember(this.child?.value).subscribe({
+    this.memberService.updatMember(this.member).subscribe({
       next:_ => {
         this.toastr.success("done");
         this.child?.reset(this.member);

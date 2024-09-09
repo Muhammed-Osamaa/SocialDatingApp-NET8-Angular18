@@ -15,9 +15,7 @@ export class BusyServiceService {
       size: 'large',
       color: '#f80000',
       type: 'triangle-skew-spin',
-    });
-    console.log(this.nubmerOfRequest);
-    
+    });    
   }
 
   idle(){
