@@ -39,7 +39,7 @@ export class MemberEditComponent implements OnInit{
     });
   }
 
-  updateMember() {
+  updateMember() {  
     this.memberService.updatMember(this.member).subscribe({
       next:_ => {
         this.toastr.success("done");

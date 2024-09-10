@@ -31,6 +31,7 @@ export class MembersService {
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
+  //note i don't know what's happing but signal gets update without update signals :D
   updatMember(member: Member) {
     return this.http.put(this.baseUrl + 'users', member).pipe(
       tap(_ => {
