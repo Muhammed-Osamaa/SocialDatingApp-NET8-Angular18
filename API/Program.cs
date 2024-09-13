@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAppliciationServices(builder.Configuration);
 builder.Services.AddIdentityService(builder.Configuration);
 
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleWare>();
