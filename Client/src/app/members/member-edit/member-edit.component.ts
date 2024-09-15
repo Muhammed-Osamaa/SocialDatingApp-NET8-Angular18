@@ -7,12 +7,13 @@ import { GalleryModule } from 'ng-gallery';
 import { TitleCasePipe } from '@angular/common';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PhotoEditComponent } from "../photo-edit/photo-edit.component";
 
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [TabsModule, GalleryModule ,TitleCasePipe,FormsModule],
+  imports: [TabsModule, GalleryModule, TitleCasePipe, FormsModule, PhotoEditComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
@@ -29,7 +30,7 @@ export class MemberEditComponent implements OnInit{
   private toastr = inject(ToastrService)
 
   ngOnInit(): void {
-   this. loadMember();
+   this.loadMember();
   }
   loadMember(){
     const username = this.accountService.currentUser();
@@ -47,4 +48,8 @@ export class MemberEditComponent implements OnInit{
       }
     })
   } 
+
+  onMemberChang(e:Member){
+    this.member = e;
+  }
 }

@@ -15,9 +15,8 @@ export class AccountService {
   login(model: { username: string; password: string }) {    
     return this.http.post<User>(this.baseUrl + `account/login`, model).pipe(
       map(user=> {
-        if(user) {              
-          this.currentUser.set(user);
-          localStorage.setItem("user",JSON.stringify(user));
+        if(user) {               
+          this.setCurrentUser(user);
         }else{
           console.log("RXJS can't hold a user");
         }
@@ -28,16 +27,20 @@ export class AccountService {
 
   register(model: { username: string; password: string }) {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
-      map(user=> {
+      map(user=> {     
         if(user) {     
-          this.currentUser.set(user);
-          localStorage.setItem("user",JSON.stringify(user));
+          this.setCurrentUser(user);
         }else{
           console.log("RXJS can't hold a user");
         }
         return user;
       })
     );
+  }
+
+  setCurrentUser(user:User){
+    this.currentUser.set(user);
+    localStorage.setItem("user",JSON.stringify(user));
   }
 
   logOut() {

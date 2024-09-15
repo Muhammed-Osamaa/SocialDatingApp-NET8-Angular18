@@ -30,7 +30,7 @@ export class NavComponent {
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: _ =>  {
+      next: user =>  {        
       this.route.navigateByUrl('/members');
       this.toastrService.success("Welcome "+this.model.username)
       },

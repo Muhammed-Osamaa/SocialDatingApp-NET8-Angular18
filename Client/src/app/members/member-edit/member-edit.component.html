@@ -100,7 +100,10 @@
           </div>
         </form>
       </tab>
-      <tab heading="Edit Photos" style="margin-top: 50px"> </tab>
+      <tab heading="Edit Photos" style="margin-top: 50px"> 
+
+        <app-photo-edit (memberChange)="onMemberChang($event)" [member]="member"></app-photo-edit>
+      </tab>
     </tabset>
   </div>
 </div>

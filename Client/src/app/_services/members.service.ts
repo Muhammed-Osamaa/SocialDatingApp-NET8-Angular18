@@ -41,6 +41,17 @@ export class MembersService {
 
   }
 
+  setMainPohot(photoId : number) {
+    return this.http.put(this.baseUrl+"users/set-main-photo/"+photoId,{}).pipe(
+      tap(_ => {
+        this.members.update(members => members.map(m => {
+          const user = m.photos.find( x => x.id === photoId);
+          if(user) m.photoUrl = user.url;
+          return m;
+        }))
+      })
+    );
+  } 
 
   // getHttpOption(){
     //   return {
