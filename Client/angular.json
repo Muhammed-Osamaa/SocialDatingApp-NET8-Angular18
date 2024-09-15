@@ -24,7 +24,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assests"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",

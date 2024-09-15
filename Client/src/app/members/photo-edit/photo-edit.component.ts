@@ -55,7 +55,7 @@ export class PhotoEditComponent implements OnInit {
       next: _ => {
         const user = this.accountService.currentUser();
         if(user) {
-          user.PhotoUrl = photo.url;
+          user.photoUrl = photo.url;
           this.accountService.setCurrentUser(user);
         }
         const newUser = {...this.member()};
@@ -64,6 +64,17 @@ export class PhotoEditComponent implements OnInit {
           if(x.isMain) x.isMain = false;
           if(x.id === photo.id) x.isMain = true;
         })
+        this.memberChange.emit(newUser);
+      }
+    })
+  }
+
+  deletePhoto(photo:Photo){
+    this.memberService.deletePhoto(photo.id).subscribe({
+      next:_ => {
+        const newUser = {...this.member()};
+        const arr = newUser.photos.filter(x => x.id != photo.id);
+        newUser.photos = arr;
         this.memberChange.emit(newUser);
       }
     })
